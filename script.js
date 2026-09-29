@@ -43,16 +43,26 @@ function endGame() {
   computerScore = 0;
   tieCounter = 0;
 }
-const rockBtn = document.querySelector(".rockBtn");
-const paperBtn = document.querySelector(".paperBtn");
-const scissorsBtn = document.querySelector(".scissorsBtn");
 
 const currentScore = document.querySelector(".currentScore");
 const displayResult = document.querySelector(".displayResult");
 
-rockBtn.addEventListener("click", () => playRound("rock"));
-paperBtn.addEventListener("click", () => playRound("paper"));
-scissorsBtn.addEventListener("click", () => playRound("scissors"));
+const buttons = document.querySelector("#buttonContainer");
+buttons.addEventListener("click", (e) => {
+  let target = e.target;
+
+  switch (target.className) {
+    case "rockBtn":
+      playRound("rock");
+      break;
+    case "paperBtn":
+      playRound("paper");
+      break;
+    case "scissorsBtn":
+      playRound("scissors");
+      break;
+  }
+});
 
 let humanScore = 0;
 let computerScore = 0;
