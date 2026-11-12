@@ -25,7 +25,7 @@ function playRound(humanChoice) {
     displayResult.textContent = `You lose ${computerChoice} beats ${humanChoice}`;
   }
 
-  humanScore === 5 || computerScore === 5 ? endGame() : 0;
+  if (humanScore === 5 || computerScore === 5) endGame();
 }
 
 function endGame() {
@@ -36,7 +36,7 @@ function endGame() {
     displayResult.textContent = `YOU WON THE GAME VS THE COMPUTER!!!`;
   } else {
     displayResult.textContent = "red";
-    displayResult.textContent = `YOU LOSED THE GAME VS THE COMPUTER!!!`;
+    displayResult.textContent = `YOU LOSE THE GAME VS THE COMPUTER!!!`;
   }
 
   humanScore = 0;
@@ -50,6 +50,8 @@ const displayResult = document.querySelector(".displayResult");
 const buttons = document.querySelector("#buttonContainer");
 buttons.addEventListener("click", (e) => {
   let target = e.target;
+
+  if (target.tagName !== "button") return;
 
   switch (target.className) {
     case "rockBtn":
